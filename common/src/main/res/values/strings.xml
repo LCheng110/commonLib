@@ -1,0 +1,102 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="rc_conversation_list_pet">宠物消息</string>
+    <string name="rc_conversation_list_order">订单消息</string>
+    <string name="rc_conversation_list_interaction">互动消息</string>
+    <string name="rc_conversation_list_system">系统消息</string>
+
+    <string name="srl_header_pulling">下拉可以刷新</string>
+    <string name="srl_header_refreshing">正在刷新…</string>
+    <string name="srl_header_loading">正在加载…</string>
+    <string name="srl_header_release">释放立即刷新</string>
+    <string name="srl_header_finish">刷新完成</string>
+    <string name="srl_header_failed">刷新失败</string>
+    <string name="srl_header_update">上次更新 M-d HH:mm</string>
+    <string name="srl_header_secondary">释放进入二楼</string>
+
+    <string name="srl_footer_pulling">上拉加载更多</string>
+    <string name="srl_footer_release">释放立即加载</string>
+    <string name="srl_footer_loading">正在加载…</string>
+    <string name="srl_footer_refreshing">正在刷新…</string>
+    <string name="srl_footer_finish">加载完成</string>
+    <string name="srl_footer_failed">加载失败</string>
+    <string name="srl_footer_nothing">没有更多数据了</string>
+
+    <string name="srl_content_empty">SmartRefreshLayout中没有找到内容视图。您是否忘记在xml布局文件中添加？</string>
+    <string name="srl_component_falsify" formatted="false">%s 虚假区域\n代表运行时拖动的高度【%.1fdp】 \n而不会显示任何东西</string>
+
+    <string name="wait">请稍后...</string>
+    <string name="loading">加载中...</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="ensure">确认</string>
+
+    <string name="desc_empty_bubble">这个泡泡被调皮的冒冒拿走了~</string>
+    <!--无网-->
+
+    <string name="load_error_no_net">你的信号还在火星上,搜不到了</string>
+    <string name="load_error_no_net_refresh">刷新重试</string>
+
+    <!-- 分享及授权 -->
+    <string name="please_install_weixin_first">您未安装微信，请先安装！</string>
+    <string name="please_install_qq_first">请先安装QQ</string>
+    <string name="please_install_qq_qzone_first">请先安装QQ或QQ空间</string>
+    <string name="please_install_weibo_first">请先安装新浪微博</string>
+    <string name="start_auth">开始授权</string>
+    <string name="auth_success">授权成功</string>
+    <string name="auth_error_try_again">授权失败，请重试</string>
+    <string name="auth_cancel_weibo_login">取消了微博登录</string>
+    <string name="auth_cancel_weixin_login">取消了微信登录</string>
+    <string name="auth_cancel_qq_login">取消了QQ登录</string>
+    <string name="weixin_friend">微信</string>
+    <string name="weixin_circle">朋友圈</string>
+    <string name="qq">QQ</string>
+    <string name="qq_qzone">空间</string>
+    <string name="sina_weibo">微博</string>
+    <string name="hail_fellow">好友</string>
+
+    <string name="shield">拉黑</string>
+    <string name="delete">删除</string>
+    <string name="tv_note">备注</string>
+    <string name="report">举报</string>
+    <string name="collection">收藏</string>
+
+    <!-- 权限 -->
+    <string name="rational_location">开启定位，你可以方便快速的在周围找到新的好友，与他们聊天、相互评论。</string>
+    <string name="rational_camera">开启摄像头权限，拍摄你最得意的照片或者视频分享给好友。</string>
+    <string name="rational_storage">开启存储权限，从相册中选择你最喜欢的照片或者视频分享给好友。</string>
+    <string name="rational_microphone">开启麦克风权限，使用麦克风方便快捷的与好友畅聊。</string>
+    <string name="permission_permanently_denied_setting">冒泡可能无法正常工作因为你永久拒绝了%1$s，跳转设置界面去开启权限。</string>
+    <string name="rational_voice">开启录音权限，才能给好友发送语音消息哦。</string>
+    <!--zxing-->
+    <string name="encode_qrcode">生成二维码</string>
+    <string name="dencode_qrcode">扫描二维码</string>
+    <string name="code_text">请输入生成二维码的文本信息</string>
+    <string name="qrcodetext">这里显示扫描结果</string>
+
+    <string name="tt_uploadimg_success">封面上传成功</string>
+    <string name="tt_uploadimg_fail">封面上传失败</string>
+    <string name="image_upload_success">图片上传成功</string>
+    <string name="image_upload_fail">上传失败，请重新上传</string>
+    <string name="image_upload_fail_verify">图片涉嫌违规</string>
+
+    <!--VideoPlayer-->
+    <string name="video_player_error_code">错误码:</string>
+    <string name="video_player_error_msg">视频播放失败</string>
+    <string name="video_player_retry">重新加载</string>
+    <string name="video_player_replay_msg">视频播放结束</string>
+    <string name="video_player_replay">重播</string>
+    <string name="video_player_loading">加载中...</string>
+
+    <!--pickerview-->
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+
+    <!-- filter -->
+    <string name="filter_num">0123456789</string>
+</resources>

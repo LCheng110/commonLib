@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_placeholder">#f4f6fa</color>
+    <color name="bg_placeholder">#9fd1ff</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="live_bg">#F7F7FA</color>
+    <color name="color_fe4f6a">#FE4F6A</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_312938">#312938</color>
+    <color name="color_F5A623">#F5A623</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+    <color name="bgColor_overlay">#60000000</color>
+
+    <!-- common colors -->
+    <color name="colorPrimary">@color/colorPink</color>
+    <color name="colorPrimaryDark">@color/colorPink</color>
+    <color name="colorAccent">@color/colorPink2</color>
+    <color name="textColorPrimary">@color/color_333333</color>
+    <color name="textColorSecondary">@color/color_333333</color>
+    <color name="textColorThirdary">@color/color_666666</color>
+    <color name="textColorFourth">@color/color_999999</color>
+    <color name="window_background">@color/color_f5f5f5</color>
+
+    <color name="colorPink">@color/color_ffe552</color>
+    <color name="divider_0d">#0d000000</color>
+    <color name="colorPink2">@color/color_ffe552</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <color name="divider_f5f5f5">@color/color_f5f5f5</color>
+
+    <color name="color_666666">#666666</color>
+    <color name="color_ffe552">#ffe552</color>
+    <color name="color_f5f5f5">#f5f5f5</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_eb3255">#eb3255</color>
+    <color name="color_393939">#393939</color>
+    <color name="color_f74a5e">#f74a5e</color>
+    <color name="color_4a4a4a">#4a4a4a</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_725032">#725032</color>
+    <color name="color_FBBC45">#FBBC45</color>
+    <color name="color_10_black">#10000000</color>
+    <color name="color_FFCC00">#FFCC00</color>
+    <color name="color_F9FAFC">#F9FAFC</color>
+    <color name="color_979FA3">#979FA3</color>
+    <color name="color_ddd">#ddd</color>
+    <color name="color_ff5d69">#ff5d69</color>
+    <color name="color_ccc">#ccc</color>
+    <color name="color_737373">#737373</color>
+    <color name="color_FFE552">#FFE552</color>
+    <color name="color_50E3C2">#50E3C2</color>
+    <color name="color_FB8200">#FB8200</color>
+    <color name="color_ABD2FF">#ABD2FF</color>
+    <color name="color_BF000000">#BF000000</color>
+    <color name="color_75EBFF">#75EBFF</color>
+    <!--zxing-->
+    <!-- QRCode scanner color begin -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#ff6666</color>
+    <color name="corner_color">#ff6666</color>
+    <color name="im_mapgo_mian">#FFE552</color>
+    <!-- QRCode scanner color end -->
+
+    <color name="color_599aff">#599AFF</color>
+    <color name="color_e8effc">#E8EFFC</color>
+    <color name="color_d8d8d8">#D8D8D8</color>
+    <color name="color_e5e5e5">#e5e5e5</color>
+    <color name="color_232A42">#232A42</color>
+    <color name="color_1e1d22">#1E1D22</color>
+    <color name="color_ff4c80">#FF4C80</color>
+
+    
+    <!-- video Player Color -->
+    <color name="video_player_white">#e7e7e7</color>
+    <color name="video_player_color_player_colorAccent">#00c1de</color>
+    <color name="video_player_blue">#379DF2</color>
+
+
+
+</resources>

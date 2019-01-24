@@ -1,0 +1,99 @@
+#-libraryjars /usr/local/sdk_soft/android-sdk-macosx/platforms/android-21/android.jar
+
+-dontwarn
+-ignorewarnings
+
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+-keepattributes Exceptions,InnerClasses,Signature,LineNumberTable,*Annotation*,SourceFile,Deprecated,EnclosingMethod
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.app.IntentService
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+#========================JCore sdk================================
+-dontwarn cn.jpush.ald.android.**
+-keep class cn.jpush.ald.android.** { *; }
+
+-dontwarn cn.jiguang.**
+-keep class cn.jiguang.** { *; }
+
+#========================google================================
+-dontwarn com.google.**
+-keep class com.google.** {*;}
+
+
+#========================loopj================================
+-dontwarn com.loopj.**
+-keep class com.loopj.** {*;}
+
+#========================qiniu================================
+-dontwarn com.qiniu.**
+-keep class com.qiniu.** {*;}
+
+#========================upyun================================
+-dontwarn com.upyun.**
+-keep class com.upyun.** {*;}
+
+#========================apache================================
+-dontwarn org.apache.**
+-keep class org.apache.** {*;}
+
+#========================JMessage================================
+-dontwarn cn.jpush.im.android.**
+#-keep class cn.jpush.im.android.** {*;}
+-keep class cn.jpush.im.android.api.** {*;}
+-keep class cn.jpush.im.api.** {*;}
+
+#======================== event bus========================
+-keep class cn.jpush.im.android.eventbus.** {*;}
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+
+#======================== proguard error========================
+-keep class cn.jpush.im.android.tasks.** {*;}
+-keep class cn.jpush.im.android.common.resp.ResponseWrapper$* {*;}
+
+#-keep class * implements cn.jpush.im.android.bolts.Continuation
+#-keepclassmembers class * implements cn.jpush.im.android.bolts.Continuation {
+#    <methods>;
+#}
+#-keep class * extends cn.jpush.im.android.tasks.AbstractTask
+#-keep class cn.jpush.im.android.tasks.AbstractTask$* {*;}
+#-keep class cn.jpush.im.android.tasks.AbstractTask {*;}
+#-keep class cn.jpush.im.android.storage.database.DBOpenHelper {*;}
+#-keep class cn.jpush.im.android.ErrorCode {*;}
+

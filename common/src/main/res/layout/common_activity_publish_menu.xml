@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.citytag.base.vm.PublishMenuVM" />
+    </data>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/dimen_50dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:onClick="@{()->viewModel.finish()}"
+    android:id="@+id/cons_content"
+    android:background="#bf2b2a32"
+    tools:context=".view.PublishMenuActivity">
+
+    <ImageView
+        android:id="@+id/iv_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_home_page_publish_dynamic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="@dimen/dimen_18dp"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:onClick="@{()->viewModel.finish()}"
+        />
+    <ImageView
+        android:id="@+id/iv_btn_dynamic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/iv_btn_back"
+        android:src="@drawable/video_icon_menu_picture"
+        app:layout_constraintStart_toStartOf="@id/iv_btn_back"
+        android:onClick="@{()->viewModel.enterPublishDynamic()}"
+        />
+    <TextView
+        android:id="@+id/tv_dynamic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_btn_dynamic"
+        app:layout_constraintTop_toTopOf="@id/iv_btn_dynamic"
+        app:layout_constraintBottom_toBottomOf="@id/iv_btn_dynamic"
+        android:text="发图文"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16sp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_btn_smallvideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/iv_btn_dynamic"
+        android:src="@drawable/video_icon_menu_short_video"
+        app:layout_constraintStart_toStartOf="@id/iv_btn_back"
+        android:onClick="@{()->viewModel.enterSmallVideo()}"
+        />
+    <TextView
+        android:id="@+id/tv_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_btn_smallvideo"
+        app:layout_constraintTop_toTopOf="@id/iv_btn_smallvideo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_btn_smallvideo"
+        android:text="拍视频"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16sp"
+        />
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>

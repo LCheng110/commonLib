@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/video_player_loading_width"
+    android:layout_height="@dimen/video_player_loading_height"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@android:style/Widget.ProgressBar"
+        android:layout_width="@dimen/video_player_loading_pbar_height"
+        android:layout_height="@dimen/video_player_loading_pbar_height"
+        android:indeterminateDrawable="@drawable/loading_rotate" />
+
+    <TextView
+        android:id="@+id/tv_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="23KB"
+        android:textColor="@color/video_player_white"
+        android:textSize="@dimen/video_player_loading_font_size" />
+
+</LinearLayout>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.citytag.mapgo.widgets.facelib.ui.FaceRelativeLayout
+        android:id="@+id/fl_face"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <cn.citytag.base.widget.refresh.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_48dp"
+            app:srlEnableFooterFollowWhenLoadFinished="true"
+            app:srlEnableScrollContentWhenLoaded="true">
+
+            <cn.citytag.mapgo.widgets.CustomRecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none" />
+        </cn.citytag.base.widget.refresh.SmartRefreshLayout>
+
+        <View
+            android:id="@+id/face_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_alignParentBottom="true" />
+
+        <RelativeLayout
+            android:id="@+id/ll_face"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_181dp"
+            android:layout_above="@+id/face_line"
+            android:background="#f6f6f6"
+            android:visibility="gone">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_contains"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimen_20dp" />
+
+            <LinearLayout
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dimen_12dp"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ll_face"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/rl_edit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5dp"
+                    android:background="@color/color_eeeeee" />
+
+                <LinearLayout
+                    android:id="@+id/rl_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_48dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!--请注意,给它设置maxlength的时候需要修改相关java代码,保证不只显示了部分表情符号!-->
+                    <LinearLayout
+                        android:id="@+id/ll_edit"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_34dp"
+                        android:layout_marginLeft="@dimen/dimen_10dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingRight="@dimen/dimen_10dp">
+
+                        <EditText
+                            android:id="@+id/edit_comment"
+                            android:layout_width="@dimen/dimen_0dp"
+                            android:layout_height="@dimen/dimen_34dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="发表评论..."
+                            android:imeOptions="actionSend"
+                            android:maxLength="140"
+                            android:maxLines="5"
+                            android:minHeight="@dimen/dimen_35dp"
+                            android:paddingBottom="@dimen/dimen_0dp"
+                            android:paddingLeft="@dimen/dimen_10dp"
+                            android:paddingTop="@dimen/dimen_0dp"
+                            android:textColor="@color/textColorPrimary"
+                            android:textColorHint="@color/color_4a4a4a"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <ImageButton
+                            android:id="@+id/btn_face"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_emoji_reply" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_send"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/dimen_12dp"
+                        android:layout_marginStart="@dimen/dimen_12dp"
+                        android:text="发送"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dimen_12dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iv_expression"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/iv_support"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dimen_14dp"
+                            android:layout_marginTop="@dimen/dimen_2dp"
+                            android:layout_toRightOf="@+id/iv_expression" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_edit_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_48dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dimen_0dp"
+                    android:layout_height="@dimen/dimen_34dp"
+                    android:layout_marginLeft="@dimen/dimen_15dp"
+                    android:layout_marginRight="@dimen/dimen_12dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/et_send_bottom"
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="@dimen/dimen_34dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="发表评论..."
+                        android:imeOptions="actionSend"
+                        android:maxLength="300"
+                        android:maxLines="5"
+                        android:minHeight="@dimen/dimen_35dp"
+                        android:paddingBottom="@dimen/dimen_0dp"
+                        android:paddingLeft="@dimen/dimen_10dp"
+                        android:paddingTop="@dimen/dimen_0dp"
+                        android:textColor="@color/textColorPrimary"
+                        android:textColorHint="@color/color_4a4a4a"
+                        android:textSize="@dimen/text_size_14sp" />
+                    <!--  <EditText
+                          android:id="@+id/et_send_bottom"
+                          android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:layout_marginStart="@dimen/dimen_15dp"
+                          android:layout_weight="1"
+                          android:drawablePadding="@dimen/dimen_5dp"
+                          android:hint="@string/write_comment"
+                          android:imeOptions="actionSend"
+                          android:maxLength="300"
+                          android:maxLines="5"
+                          android:minHeight="@dimen/dimen_34dp"
+                          android:paddingLeft="@dimen/dimen_10dp"
+                          android:text="@={viewModel.commentTextField}"
+                          android:textColor="@color/textColorPrimary"
+                          android:textColorHint="@color/color_999999"
+                          android:textSize="@dimen/text_size_14sp" />-->
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/btn_face_bottom"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/dimen_5dp"-->
+                    <!--android:layout_marginRight="@dimen/dimen_9dp"-->
+                    <!--android:src="@drawable/ic_emoji"-->
+                    <!--android:visibility="visible" />-->
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btn_face_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen_12dp"
+                    android:src="@drawable/ic_emoji_reply"
+                    android:visibility="visible" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iv_expression_bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dimen_15dp"
+                            android:layout_marginTop="@dimen/dimen_2dp"
+                            android:layout_toRightOf="@+id/iv_expression_bottom" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+    </cn.citytag.mapgo.widgets.facelib.ui.FaceRelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_turn_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_turn_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:padding="@dimen/dimen_10dp"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxLength="15"
+            android:textColor="#00000000"
+            android:textSize="16sp"
+            tools:text="标题党" />
+
+
+    </RelativeLayout>
+</FrameLayout>

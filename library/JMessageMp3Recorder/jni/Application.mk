@@ -1,0 +1,5 @@
+APP_ABI := all
+APP_PLATFORM := android-9
+APP_STL := stlport_static
+STLPORT_FORCE_REBUILD := true
+APP_CFLAGS += -DSTDC_HEADERS

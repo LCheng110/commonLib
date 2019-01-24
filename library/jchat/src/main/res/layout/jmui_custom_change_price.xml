@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    >
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/jmui_send_time_txt"
+        style="@style/jmui_chat_text_date_style"/>
+    <RelativeLayout
+        android:id="@+id/rl_click"
+        android:background="@drawable/order_message_bg"
+        android:layout_below="@id/jmui_send_time_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/iv_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"/>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_icon">
+            <TextView
+                android:id="@+id/tv_order_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#979797"
+                android:textSize="@dimen/text_size_14sp"
+                android:text="我和你的距离就差付款了，我已经等不及为你服务了"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <LinearLayout
+                android:id="@+id/ll_not_updata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tv_order_info"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥ "
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_newprice_not"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="888"
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="～"
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_oldunit_not"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥ "
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_oldprice_not"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_2dp"
+                    android:text="1000"
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_updata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tv_order_info"
+                android:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥ "
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_newprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="888"
+                    android:textColor="@color/color_eb3255"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_oldunit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥ "
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_oldprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dimen_2dp"
+                    android:text="1000"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/text_size_12sp"
+                    android:layout_marginTop="@dimen/dimen_5dp"/>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/jmui_group_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

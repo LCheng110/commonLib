@@ -1,0 +1,120 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    dataBinding.enabled = true
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.1.3'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    //    compile 'com.android.support:support-v4:24.0.0'
+    //    compile 'com.android.support:support-v7:24.0.0'     // v7是要依赖v4
+    //    compile 'com.android.support:design:24.0.0'   // 有RecyclerView
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+    // gradle引用appcompat-v7包的时候就不需要引用v4了，因为v7里默认包含了v4包
+    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
+    compile 'com.alibaba:fastjson:1.2.44'
+    compile ('com.squareup.retrofit2:retrofit:2.3.0'){
+        exclude group: 'com.squareup.okhttp3',module: 'okhttp'
+    }
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
+    compile ("io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion",{
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    })
+    compile ('com.squareup.retrofit2:converter-gson:2.3.0',{
+        exclude group:'com.google.code.gson',module:'gson'
+    })
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile ('com.squareup.retrofit2:adapter-rxjava2:2.3.0',{
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    })
+    compile 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    compile ('com.trello.rxlifecycle2:rxlifecycle:2.1.0',{
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    })
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    // If you want pre-written Activities and Fragments you can subclass as providers
+    compile('com.trello.rxlifecycle2:rxlifecycle-components:2.1.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    }
+    compile 'com.danikula:videocache:2.7.0'
+    //    compile 'com.aliyun.dpa:oss-android-sdk:2.4.5'
+    compile 'org.greenrobot:greendao:3.2.2'
+    // 阿里云内部使用
+    compile 'org.greenrobot:eventbus:3.1.1'
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'ren.qinc.edgetranslucent:lib:0.0.3'
+    compile ('com.github.LRH1993:AutoFlowLayout:1.0.5',{
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    })
+    //添加 Sensors Analytics SDK 依赖
+    compile 'com.sensorsdata.analytics.android:SensorsAnalyticsSDK:1.10.6'
+    compile 'com.umeng.analytics:analytics:6.1.4'
+    compile 'com.google.zxing:core:3.3.2'
+
+    compile(name: 'AlivcPlayer-3.4.8', ext: 'aar')
+    compile(name: 'AlivcReporter-1.2', ext: 'aar')
+    compile(name: 'AliyunVodPlayer-3.4.8', ext: 'aar')
+    //短视频SDK
+    compile 'com.aliyun.dpa:oss-android-sdk:+'
+    compile(name:'AliyunSdk-RCE', ext:"aar")
+
+//    debugProvided 'com.readystatesoftware.chuck:library:1.1.0'
+//    releaseProvided 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+//    compile('com.ald.library:lib-razor-release:1.1.2') {
+//            exclude(group: 'com.android.support')
+//            exclude(module: 'okhttp3-integration')
+//            exclude(group:'com.scwang.smartrefresh')
+//    }
+//    compile files('libs/baiqishi-risk-sdk-2.2.1.jar')
+//    compile files('libs/bcprov-jdk16-1.45.jar')
+
+
+}
