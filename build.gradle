@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter()
+        mavenLocal()
         mavenCentral()
         //添加 Sensors Analytics maven 库地址
         maven {
@@ -19,7 +20,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'me.tatarka:gradle-retrolambda:3.7.0' // 使用第三方的Java8兼容插件，retrolambda
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add greendao plugin
         classpath 'com.meituan.android.walle:plugin:1.1.5'  // Walle Gradle插件的依赖

@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
 
 android {
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     dataBinding.enabled = true
@@ -38,6 +41,41 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+//定义上传行为
+uploadArchives {
+    //仓库基于maven
+    repositories.mavenDeployer {
+        //配置上传的url
+        repository(url: "http://nexus.maopp.cn/repository/android/") {
+            authentication(userName: "admin", password: "admin123")
+        }
+        pom.groupId = "com.android.citytag"
+        pom.artifactId = "common"
+        pom.version = "0.0.1"
+        pom.project {
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+        }
     }
 }
 
@@ -213,8 +251,7 @@ bintray {
     key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
     configurations = ['archives']
     pkg {
-        userOrg = 'liucheng'
-        repo = libName
+        repo = 'maopp'
         name = libName    //发布到JCenter上的项目名字，必须填写
         desc = 'This is a common library for maopp'    //项目描述
         websiteUrl = siteUrl
