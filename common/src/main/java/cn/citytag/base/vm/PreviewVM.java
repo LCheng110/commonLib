@@ -17,6 +17,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.citytag.base.R;
 import cn.citytag.base.adapter.PreviewAdapter;
 import cn.citytag.base.dao.MediaInfo;
 import cn.citytag.base.databinding.ActivityPreviewBinding;
@@ -46,11 +47,7 @@ import static cn.citytag.base.constants.ExtraName.EXTRA_SELECT_POSITION;
 /**
  * Created by yangfeng01 on 2017/12/18.
  */
-public class PreviewVM extends BaseVM {
-
-    public final ObservableBoolean isShowDelete = new ObservableBoolean(true);    // 是否显示删除
-    public final ObservableBoolean isShowDownload = new ObservableBoolean(false);    // 是否显示下载
-    public final ObservableField<String> sizeField = new ObservableField<>();    // 1/5
+public class PreviewVM extends BaseVM implements View.OnClickListener {
 
     private Activity activity;
     private ActivityPreviewBinding cvb;
@@ -82,27 +79,29 @@ public class PreviewVM extends BaseVM {
 
 
     private void init() {
+        cvb.ivDelete.setOnClickListener(this);
+        cvb.ivBottomDownload.setOnClickListener(this);
         for (String s : images = activity.getIntent().getStringArrayListExtra(EXTRA_PREVIEW_IMAGES)) {
-            
+
         }
 
         imagesThumb = activity.getIntent().getStringArrayListExtra(EXTRA_PREVIEW_THUMB_IMAGES);
-                curPosition = activity.getIntent().getIntExtra(EXTRA_SELECT_POSITION, 0);
-        sizeField.set((curPosition + 1) + "/" + images.size());
+        curPosition = activity.getIntent().getIntExtra(EXTRA_SELECT_POSITION, 0);
         boolean showDelete = activity.getIntent().getBooleanExtra(EXTRA_PREVIEW_SHOW_DELETE, true);
         boolean showDownload = activity.getIntent().getBooleanExtra(EXTRA_PREVIEW_SHOW_DOWNLOAD, false);
-        isShowDelete.set(showDelete);
+        cvb.ivDelete.setVisibility(showDelete ? View.VISIBLE : View.GONE);
+        cvb.tvBottomContent.setText((curPosition + 1) + "/" + images.size());
         if (showDelete) {
             cvb.circleIndicator.setVisibility(View.VISIBLE);
             cvb.rlBottom.setVisibility(View.GONE);
         }
         if (showDownload) {
-            isShowDownload.set(showDownload);
+            cvb.ivBottomDownload.setVisibility(showDownload ? View.VISIBLE : View.GONE);
             cvb.circleIndicator.setVisibility(View.GONE);
             cvb.rlTitle.setVisibility(View.GONE);
             cvb.rlBottom.setVisibility(View.VISIBLE);
         }
-        adapter = new PreviewAdapter(images,imagesThumb, activity, isShowAlpha);
+        adapter = new PreviewAdapter(images, imagesThumb, activity, isShowAlpha);
         cvb.viewPager.setAdapter(adapter);
         cvb.viewPager.setCurrentItem(curPosition, false);
         cvb.circleIndicator.setViewPager(cvb.viewPager, curPosition);
@@ -115,7 +114,7 @@ public class PreviewVM extends BaseVM {
             @Override
             public void onPageSelected(int position) {
                 curPosition = position;
-                sizeField.set((curPosition + 1) + "/" + images.size());
+                cvb.tvBottomContent.setText((curPosition + 1) + "/" + images.size());
             }
 
             @Override
@@ -236,5 +235,15 @@ public class PreviewVM extends BaseVM {
     @Override
     public void detach() {
         RxDisposableManager.unsubscribe(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.iv_delete) {
+            deleteMedia(v);
+        } else if (id == R.id.iv_bottom_download){
+            clickDownload(v);
+        }
     }
 }

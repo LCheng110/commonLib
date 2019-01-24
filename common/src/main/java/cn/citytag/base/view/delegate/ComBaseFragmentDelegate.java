@@ -253,7 +253,7 @@ public class ComBaseFragmentDelegate implements FragmentDelegate, ISupportFragme
 	/**
 	 * @param launchMode Similar to Activity's LaunchMode.
 	 */
-	public void start(ISupportFragment toFragment, @LaunchMode int launchMode) {
+	public void start(ISupportFragment toFragment, int launchMode) {
 		delegate.start(toFragment, launchMode);
 	}
 

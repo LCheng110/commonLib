@@ -423,7 +423,7 @@ public abstract class ComBaseActivity<CVB extends ViewDataBinding, VM extends Ba
     /**
      * @param launchMode Same as Activity's LaunchMode.
      */
-    public void start(ISupportFragment toFragment, @ISupportFragment.LaunchMode int launchMode) {
+    public void start(ISupportFragment toFragment, int launchMode) {
         delegate.start(toFragment, launchMode);
     }
 

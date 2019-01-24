@@ -38,11 +38,10 @@
             android:paddingRight="@dimen/dimen_15dp">
 
             <ImageView
+                android:id="@+id/iv_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{viewModel.deleteMedia}"
-                android:src="@drawable/ic_preview_delete"
-                app:visibility="@{viewModel.isShowDelete}"/>
+                android:src="@drawable/ic_preview_delete"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -56,26 +55,25 @@
             android:paddingRight="@dimen/dimen_15dp">
 
             <TextView
+                android:id="@+id/tv_bottom_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/dimen_15dp"
                 android:gravity="center"
-                android:text="@{viewModel.sizeField}"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/text_size_14sp"
                 tools:text="1/5"/>
 
             <ImageView
+                android:id="@+id/iv_bottom_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="@dimen/dimen_15dp"
-                android:onClick="@{viewModel.clickDownload}"
                 android:src="@drawable/ic_preview_download"
                 android:visibility="gone"
-                app:visibility="@{viewModel.isShowDownload}"
                 tools:visibility="visible"/>
 
         </RelativeLayout>
