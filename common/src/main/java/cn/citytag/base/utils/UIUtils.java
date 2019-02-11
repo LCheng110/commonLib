@@ -26,7 +26,6 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 import cn.citytag.base.config.BaseConfig;
-import cn.citytag.base.constants.Constants;
 
 /**
  * Created by yangfeng01 on 2017/11/9.
@@ -69,19 +68,19 @@ public class UIUtils {
     }
 
     public static void toastMessage(String msg) {
-        if (StringUtils.isEmpty(msg)) {
+        if (TextUtils.isEmpty(msg)) {
             return;
         }
         ToastUtil.toastMessage(BaseConfig.getContext(), msg);
     }
     public static void toastMessagelong(String msg) {
-        if (StringUtils.isEmpty(msg)) {
+        if (TextUtils.isEmpty(msg)) {
             return;
         }
         ToastUtil.toastMessagelong(BaseConfig.getContext(), msg);
     }
     public static void toastMessage(Context context, String msg) {
-        if (StringUtils.isEmpty(msg)) {
+        if (TextUtils.isEmpty(msg)) {
             return;
         }
         ToastUtil.toastMessage(context, msg);
@@ -91,14 +90,14 @@ public class UIUtils {
         if (msg == 0) {
             return;
         }
-        ToastUtil.toastMessage(ActivityUtils.peek(), msg);
+        ToastUtil.toastMessage(BaseConfig.getContext(), msg);
     }
 
     public static void toastMessage(String msg, int time) {
-        if (StringUtils.isEmpty(msg)) {
+        if (TextUtils.isEmpty(msg)) {
             return;
         }
-        ToastUtil.toastMessage(ActivityUtils.peek(), msg, time);
+        ToastUtil.toastMessage(BaseConfig.getContext(), msg, time);
     }
 
     private static void ensureDensity() {
@@ -306,19 +305,6 @@ public class UIUtils {
      */
     public static boolean isInLeft(Context mContext, int xPos) {
         return (xPos < getScreenWidth(mContext) / 2);
-    }
-
-
-    /**
-     * @param str
-     * @return
-     */
-    public static String emptyProtect(String str) {
-        if (TextUtils.isEmpty(str)) {
-            return Constants.EMPTY_PROTECT;
-        } else {
-            return str;
-        }
     }
 
     /**

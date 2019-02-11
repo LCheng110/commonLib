@@ -8,6 +8,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     dataBinding.enabled = true
 
+    lintOptions {
+        abortOnError false
+    }
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -76,6 +79,21 @@ uploadArchives {
                 }
             }
         }
+        //去除对common的引用
+        pom.whenConfigured { pom ->
+            pom.dependencies.forEach { dep ->
+                if (dep.getVersion() == "unspecified") {
+                    println("--modify the dependenies module in pom.xml--->>" + dep.getArtifactId())
+                    dep.setGroupId("common")
+                    dep.setVersion("0.0.1")
+                }
+                if (dep.getType() == "aar") {
+                    println("--modify the dependenies module in pom.xml--->>" + dep.getArtifactId())
+                    dep.setGroupId("common")
+                    dep.setVersion("0.0.1")
+                }
+            }
+        }
     }
 }
 
@@ -96,58 +114,16 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
     compile 'com.alibaba:fastjson:1.2.44'
-    compile ('com.squareup.retrofit2:retrofit:2.3.0'){
-        exclude group: 'com.squareup.okhttp3',module: 'okhttp'
+    compile('com.squareup.retrofit2:retrofit:2.3.0') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
-    compile ("io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion",{
+    compile("io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion", {
         exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
     })
-    compile ('com.squareup.retrofit2:converter-gson:2.3.0',{
-        exclude group:'com.google.code.gson',module:'gson'
+    compile('com.squareup.retrofit2:converter-gson:2.3.0', {
+        exclude group: 'com.google.code.gson', module: 'gson'
     })
-    compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile ('com.squareup.retrofit2:adapter-rxjava2:2.3.0',{
-        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-    })
-    compile 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    compile ('com.trello.rxlifecycle2:rxlifecycle:2.1.0',{
-        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-    })
-    compile 'com.facebook.rebound:rebound:0.3.8'
-    // If you want pre-written Activities and Fragments you can subclass as providers
-    compile('com.trello.rxlifecycle2:rxlifecycle-components:2.1.0') {
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-    }
-    compile 'com.danikula:videocache:2.7.0'
-    //    compile 'com.aliyun.dpa:oss-android-sdk:2.4.5'
-    compile 'org.greenrobot:greendao:3.2.2'
-    // 阿里云内部使用
-    compile 'org.greenrobot:eventbus:3.1.1'
-    compile 'com.youth.banner:banner:1.4.10'
-    compile 'ren.qinc.edgetranslucent:lib:0.0.3'
-    compile ('com.github.LRH1993:AutoFlowLayout:1.0.5',{
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-    })
-    //添加 Sensors Analytics SDK 依赖
-    compile 'com.sensorsdata.analytics.android:SensorsAnalyticsSDK:1.10.6'
-    compile 'com.umeng.analytics:analytics:6.1.4'
-    compile 'com.google.zxing:core:3.3.2'
-    compile project(':rxbus2')
-    compile project(':fragmentation_core')
-    compile project(':pictureselector')
-    compile project(':IDCardLib')
-    compile project(':livenesslib')
-
-    compile(name: 'AlivcPlayer-3.4.8', ext: 'aar')
-    compile(name: 'AlivcReporter-1.2', ext: 'aar')
-    compile(name: 'AliyunVodPlayer-3.4.8', ext: 'aar')
-    //短视频SDK
-    compile 'com.aliyun.dpa:oss-android-sdk:+'
-    compile(name:'AliyunSdk-RCE', ext:"aar")
 
 //    debugProvided 'com.readystatesoftware.chuck:library:1.1.0'
 //    releaseProvided 'com.readystatesoftware.chuck:library-no-op:1.1.0'
@@ -164,102 +140,102 @@ dependencies {
 
 /** 以下开始是将Android Library上传到jcenter的相关配置**/
 
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-//项目主页
-def siteUrl = 'https://github.com/LCheng110/commonLib'    // project homepage
-//项目的版本控制地址
-def gitUrl = 'https://github.com/LCheng110/commonLib.git' // project git
-
-//发布到组织名称名字，必须填写
-group = "cn.citytag.base"
-//发布到JCenter上的项目名字，必须填写
-def libName = "commonLib"
-// 版本号，下次更新是只需要更改版本号即可
-version = "1.0.0"
-/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'cn.bluemobi.dylan:sqlitelibrary:1.0'  **/
-
-//生成源文件
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-//生成文档
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding "UTF-8"
-    options.charSet 'UTF-8'
-    options.author true
-    options.version true
-    options.links "https://github.com/linglongxin24/FastDev/tree/master/mylibrary/docs/javadoc"
-    failOnError false
-}
-
-//文档打包成jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-//拷贝javadoc文件
-task copyDoc(type: Copy) {
-    from "${buildDir}/docs/"
-    into "docs"
-}
-//上传到jcenter所需要的源码文件
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-// 配置maven库，生成POM.xml文件
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'This is a common library for maopp'
-                url siteUrl
-                licenses {
-                    license {
-                        name 'This is a common library for maopp'
-                        url 'https://github.com/LCheng110/commonLib'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'lchenghogan'
-                        name 'hogan'
-                        email 'lchenghogan@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-//上传到jcenter
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
-    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
-    configurations = ['archives']
-    pkg {
-        repo = 'maopp'
-        name = libName    //发布到JCenter上的项目名字，必须填写
-        desc = 'This is a common library for maopp'    //项目描述
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+////项目主页
+//def siteUrl = 'https://github.com/LCheng110/commonLib'    // project homepage
+////项目的版本控制地址
+//def gitUrl = 'https://github.com/LCheng110/commonLib.git' // project git
+//
+////发布到组织名称名字，必须填写
+//group = "cn.citytag.base"
+////发布到JCenter上的项目名字，必须填写
+//def libName = "commonLib"
+//// 版本号，下次更新是只需要更改版本号即可
+//version = "1.0.0"
+///**  上面配置后上传至jcenter后的编译路径是这样的： compile 'cn.bluemobi.dylan:sqlitelibrary:1.0'  **/
+//
+////生成源文件
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+////生成文档
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    options.encoding "UTF-8"
+//    options.charSet 'UTF-8'
+//    options.author true
+//    options.version true
+//    options.links "https://github.com/linglongxin24/FastDev/tree/master/mylibrary/docs/javadoc"
+//    failOnError false
+//}
+//
+////文档打包成jar
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+////拷贝javadoc文件
+//task copyDoc(type: Copy) {
+//    from "${buildDir}/docs/"
+//    into "docs"
+//}
+////上传到jcenter所需要的源码文件
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
+//
+//// 配置maven库，生成POM.xml文件
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//                name 'This is a common library for maopp'
+//                url siteUrl
+//                licenses {
+//                    license {
+//                        name 'This is a common library for maopp'
+//                        url 'https://github.com/LCheng110/commonLib'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'lchenghogan'
+//                        name 'hogan'
+//                        email 'lchenghogan@gmail.com'
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
+////上传到jcenter
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//bintray {
+//    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+//    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+//    configurations = ['archives']
+//    pkg {
+//        repo = 'maopp'
+//        name = libName    //发布到JCenter上的项目名字，必须填写
+//        desc = 'This is a common library for maopp'    //项目描述
+//        websiteUrl = siteUrl
+//        vcsUrl = gitUrl
+//        licenses = ["Apache-2.0"]
+//        publish = true
+//    }
+//}
 
 
 

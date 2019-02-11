@@ -74,27 +74,11 @@
                     android:scheme="zxing" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.PreviewActivity" />
-        <activity
-            android:name=".view.PublishMenuActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/dialog_activity" />
-
-        <activity
-            android:name=".view.VideoPlayerActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <service
             android:name=".ShortVideoUploadService"
             android:enabled="true"
             android:exported="false"/>
-        <receiver android:name=".utils.network.NetStateReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

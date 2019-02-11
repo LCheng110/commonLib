@@ -33,28 +33,6 @@ boolean isInJeknins() {
 }
 initConfig()
 
-include  ':jchat', ':reclib-qq', ':reclib-testemoticons', ':android', ':JMessageFastDfs', ':JMessageMp3Recorder'
 
-
-include ':app', ':common', ':AliyunVideoSdk', ':wheelpicker' , ':rxbus2', ':pictureselector', ':ucrop', ':imlib', ':imkit', ':fragmentation_core', ':ijkplayer-armv7a', ':ijkplayer-java', ':ijkplayer-armv7a', ':ijkplayer-java', ':IDCardLib',':livenesslib'
-project(':AliyunVideoSdk').projectDir = new File('library/AliyunVideoSdk')
-project(':wheelpicker').projectDir = new File('library/wheelpicker')
-project(':rxbus2').projectDir = new File('library/rxbus2')
-project(':pictureselector').projectDir = new File('library/pictureselector')
-project(':IDCardLib').projectDir = new File('library/IDCardLib')
-project(':ucrop').projectDir = new File('library/ucrop')
-project(':imlib').projectDir = new File('library/imlib')
-project(':imkit').projectDir = new File('library/imkit')
-project(':livenesslib').projectDir = new File('library/livenesslib')
-project(':fragmentation_core').projectDir = new File('library/fragmentation_core')
-project(':ijkplayer-armv7a').projectDir = new File('library/ijkplayer-armv7a')
-project(':ijkplayer-java').projectDir = new File('library/ijkplayer-java')
-
-project(':jchat').projectDir = new File('library/jchat')
-project(':android').projectDir = new File('library/android')
-//project(':jiguang-core').projectDir = new File('library/jiguang-core')
-project(':JMessageFastDfs').projectDir = new File('library/JMessageFastDfs')
-project(':JMessageMp3Recorder').projectDir = new File('library/JMessageMp3Recorder')
-project(':reclib-qq').projectDir = new File('library/reclib-qq')
-project(':reclib-testemoticons').projectDir = new File('library/reclib-testemoticons')
+include ':app', ':common'
 
