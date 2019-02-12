@@ -70,7 +70,7 @@ uploadArchives {
         }
         pom.groupId = "com.android.maopp"
         pom.artifactId = "common"
-        pom.version = "0.0.1"
+        pom.version = "0.0.6"
         pom.project {
             licenses {
                 license {
@@ -85,12 +85,12 @@ uploadArchives {
                 if (dep.getVersion() == "unspecified") {
                     println("--modify the dependenies module in pom.xml--->>" + dep.getArtifactId())
                     dep.setGroupId("common")
-                    dep.setVersion("0.0.1")
+                    dep.setVersion("0.0.6")
                 }
                 if (dep.getType() == "aar") {
                     println("--modify the dependenies module in pom.xml--->>" + dep.getArtifactId())
                     dep.setGroupId("common")
-                    dep.setVersion("0.0.1")
+                    dep.setVersion("0.0.6")
                 }
             }
         }
@@ -128,8 +128,18 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     compile 'com.sensorsdata.analytics.android:SensorsAnalyticsSDK:1.10.6'
     compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'org.greenrobot:eventbus:3.1.1'
+    compile 'com.aliyun.dpa:oss-android-sdk:+'
     compile "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    compile ('com.github.LRH1993:AutoFlowLayout:1.0.5',{
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    })
 
+    compile('com.trello.rxlifecycle2:rxlifecycle-components:2.1.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    }
 }
 
 /** 以下开始是将Android Library上传到jcenter的相关配置**/
