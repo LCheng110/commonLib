@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 
-
 /**
  * Created by yangfeng01 on 2017/11/15.
  */

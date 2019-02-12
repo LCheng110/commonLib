@@ -42,7 +42,7 @@ public class HttpClient {
         builder.readTimeout(DEFAULT_READ_TIMEOUT, TimeUnit.SECONDS);
         builder.writeTimeout(DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS);
 
-        HttpLoggingInterceptor loggingInterceptor = new okhttp3.logging.HttpLoggingInterceptor();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         if (L.sDebug) {
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         } else {
