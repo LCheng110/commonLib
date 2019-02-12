@@ -9,6 +9,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import cn.citytag.base.utils.Md5Util;
+import cn.citytag.base.utils.StringUtils;
 
 /**
  * Created by yangfeng01 on 2017/11/14.
@@ -292,7 +293,7 @@ public class BaseConfig {
     }
 
     public static String getSign() {
-        if (TextUtils.isEmpty(token)) {
+        if (StringUtils.isEmpty(token)) {
             return "";
         }
         return Md5Util.generate(token);

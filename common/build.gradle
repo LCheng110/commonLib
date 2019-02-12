@@ -65,10 +65,10 @@ uploadArchives {
     //仓库基于maven
     repositories.mavenDeployer {
         //配置上传的url
-        repository(url: "http://nexus.maopp.cn/repository/android/") {
+        repository(url: "http://nexus.maopp.cn/repository/android-common/") {
             authentication(userName: "admin", password: "admin123")
         }
-        pom.groupId = "com.android.citytag"
+        pom.groupId = "com.android.maopp"
         pom.artifactId = "common"
         pom.version = "0.0.1"
         pom.project {
@@ -104,9 +104,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile "junit:junit:$rootProject.ext.junitVersion"
-    //    compile 'com.android.support:support-v4:24.0.0'
-    //    compile 'com.android.support:support-v7:24.0.0'     // v7是要依赖v4
-    //    compile 'com.android.support:design:24.0.0'   // 有RecyclerView
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
     // gradle引用appcompat-v7包的时候就不需要引用v4了，因为v7里默认包含了v4包
@@ -124,17 +121,13 @@ dependencies {
     compile('com.squareup.retrofit2:converter-gson:2.3.0', {
         exclude group: 'com.google.code.gson', module: 'gson'
     })
-
-//    debugProvided 'com.readystatesoftware.chuck:library:1.1.0'
-//    releaseProvided 'com.readystatesoftware.chuck:library-no-op:1.1.0'
-//    compile('com.ald.library:lib-razor-release:1.1.2') {
-//            exclude(group: 'com.android.support')
-//            exclude(module: 'okhttp3-integration')
-//            exclude(group:'com.scwang.smartrefresh')
-//    }
-//    compile files('libs/baiqishi-risk-sdk-2.2.1.jar')
-//    compile files('libs/bcprov-jdk16-1.45.jar')
-
+    compile ('com.squareup.retrofit2:adapter-rxjava2:2.3.0',{
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    })
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    compile 'com.sensorsdata.analytics.android:SensorsAnalyticsSDK:1.10.6'
+    compile 'com.umeng.analytics:analytics:latest.integration'
 
 }
 
